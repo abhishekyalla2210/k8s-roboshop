@@ -39,7 +39,6 @@ spec:
            - configMapRef:
               name: catalogue
           ports:
-          - name: liveness-port
             containerPort: 8080
           readinessProbe:
               httpGet:
