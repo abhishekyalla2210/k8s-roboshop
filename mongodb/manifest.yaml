@@ -5,17 +5,20 @@ metadata:
   labels:
     component: mongodb
     project: roboshop
+    tier: db
 spec:
   replicas: 1
   selector:
     matchLabels:
       component: mongodb
       project: roboshop
+      tier: db
   template:
     metadata:
       labels:
         component: mongodb
         project: roboshop
+        tier: db
     spec:
       containers:
         - name: mongodb
@@ -44,6 +47,7 @@ spec:
   selector:
     component: mongodb
     project: roboshop
+    tier: db
   ports:
     - protocol: TCP
       port: 27017

@@ -1,0 +1,71 @@
+apiVersion: v1 
+kind: ConfigMap
+metadata: 
+  name: frontend
+  namespace: roboshop
+data: 
+  nginx.config: |
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: frontend
+spec: 
+    replicas: 1
+    selector:
+      matchLabels:
+        component: frontend
+        tier: frontend
+        project: roboshop
+    template:
+      metadata:
+        labels:
+          component: frontend
+          tier: frontend
+          project: roboshop
+      spec:
+        containers:
+          - name: frontend
+            image: abhishekyalla/frontend:v1
+            imagePullPolicy: Always
+            ports:
+              - name: liveness-port
+                containerPort: 8080
+            volumeMounts:
+              - name: nginx.config
+                mountPath: /etc/nginx/nginx.conf
+                subPath: nginx.conf
+
+            readinessProbe:
+            httpGet:
+              path: /health
+              port: liveness-port
+            failureThreshold: 1
+            periodSeconds: 15
+
+            livenessProbe:
+            httpGet:
+              path: /health
+              port: liveness-port
+              failureThreshold: 1
+              periodSeconds: 15
+        volumes:
+         - name: nginx.config
+           configMap:
+            name: frontend
+
+---
+apiVersion: v1 
+kind: Service
+metadata: 
+  name: frontend 
+  namespace: roboshop
+spec:
+  selector:
+    component: frontend
+    tier: frontend
+    project: roboshop
+
+  
