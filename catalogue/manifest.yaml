@@ -13,6 +13,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:   
   name: catalogue
+  namespace: roboshop
   labels:
     component: catalogue
     project: roboshop
