@@ -39,7 +39,7 @@ spec:
            - configMapRef:
               name: catalogue
           ports:
-            containerPort: 8080
+            - containerPort: 8080
           readinessProbe:
               httpGet:
               path: /health
