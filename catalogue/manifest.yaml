@@ -43,8 +43,8 @@ spec:
             containerPort: 8080
           readinessProbe:
             httpGet:
-              path: /health
-              port: liveness-port
+            path: /health
+            port: liveness-port
             failureThreshold: 1
             periodSeconds: 15
           livenessProbe:
@@ -69,6 +69,6 @@ spec:
   ports:
    - protocol: TCP
      port: 8080
-     targetport: 8080
+     targetPort: 8080
 
     
