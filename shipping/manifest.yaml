@@ -20,7 +20,6 @@ metadata:
 spec:
   replicas: 1
   selector:
-    # these labels are used to select pods
     matchLabels:
       project: roboshop
       component: shipping
@@ -41,18 +40,18 @@ spec:
         - configMapRef:
             name: shipping
         ports:
-        - name: liveness-port
-          containerPort: 8080
+        
+        - containerPort: 8080
         readinessProbe:
           httpGet:
             path: /health
-            port: liveness-port
+            port: 8080
           failureThreshold: 1
           periodSeconds: 15
         livenessProbe:
           httpGet:
             path: /health
-            port: liveness-port
+            port: 8080
           failureThreshold: 1
           periodSeconds: 15
 ---
@@ -66,7 +65,7 @@ spec:
     project: roboshop
     component: shipping
     tier: backend
-    
+
   ports:
     - protocol: TCP
       port: 8080 # service port
