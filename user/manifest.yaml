@@ -19,13 +19,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      componenet: user
+      component: user
       project: roboshop
       tier: backend
   template:
     metadata:
      labels:
-      componenet: user
+      component: user
       project: roboshop
       tier: backend
     spec:
@@ -43,7 +43,7 @@ spec:
               path: /health
               port: 8080
             failureThreshold: 1
-            periodSeconds: 15
+            periodSeconds: 50
           livenessProbe:
             httpGet:
               path: /health
