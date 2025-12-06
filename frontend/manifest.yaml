@@ -96,7 +96,7 @@ spec:
               - name: liveness-port
                 containerPort: 8080
             volumeMounts:
-              - name: nginx.config
+              - name: nginx-config
                 mountPath: /etc/nginx/nginx.conf
                 subPath: nginx.config
 
@@ -114,7 +114,7 @@ spec:
              failureThreshold: 1
              periodSeconds: 15
         volumes:
-         - name: nginx.config
+         - name: nginx-config
            configMap:
             name: frontend
 
