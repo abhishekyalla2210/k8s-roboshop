@@ -124,8 +124,8 @@ kind: Service
 metadata: 
   name: frontend 
   namespace: roboshop
-  type: LoadBalancer
 spec:
+  type: LoadBalancer
   selector:
     component: frontend
     tier: frontend
