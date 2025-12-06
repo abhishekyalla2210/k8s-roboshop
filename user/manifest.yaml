@@ -29,7 +29,7 @@ spec:
       project: roboshop
       tier: backend
     spec:
-      contaniners:
+      containers:
         - name: user
           image: abhishekyalla/user:v1
           imagePullPolicy: Always
@@ -46,7 +46,7 @@ spec:
             failureThreshold: 1
             periodSeconds: 15
           livenessProbe:
-              httpGet:
+            httpGet:
               path: /health
               port: liveness-port
               failureThreshold: 1
