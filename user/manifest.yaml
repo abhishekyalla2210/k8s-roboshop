@@ -34,8 +34,7 @@ spec:
           image: abhishekyalla/user:v1
           imagePullPolicy: Always
           ports:
-           
-             containerPort: 8080
+           - containerPort: 8080
           envFrom:
             - configMapRef:
               name: user
