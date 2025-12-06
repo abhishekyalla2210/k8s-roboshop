@@ -104,15 +104,15 @@ spec:
              httpGet:
               path: /
               port: liveness-port
-            failureThreshold: 1
-            periodSeconds: 15
+             failureThreshold: 1
+             periodSeconds: 15
 
             livenessProbe:
              httpGet:
               path: /
               port: liveness-port
-              failureThreshold: 1
-              periodSeconds: 15
+             failureThreshold: 1
+             periodSeconds: 15
         volumes:
          - name: nginx.config
            configMap:
