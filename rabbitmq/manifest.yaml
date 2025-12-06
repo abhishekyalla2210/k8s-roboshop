@@ -39,8 +39,8 @@ spec:
       - name: rabbitmq
         image: rabbitmq:3
         envFrom:
-          configMapRef:
-            name: rabbitmq
+        - configMapRef:
+             name: rabbitmq
         imagePullPolicy: Always
         readinessProbe:
           tcpSocket:
